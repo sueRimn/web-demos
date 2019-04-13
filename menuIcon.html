@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>menu icon</title>
+    <style>
+        .container{
+            display: inline-block;
+            cursor: pointer;
+        }
+        .bar-1, .bar-2, .bar-3{
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        /* 第二个隐藏 */
+        .change .bar-1{
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+        .change .bar-2{
+            opacity: 0;
+        }
+        .change .bar-3{
+            -webkit-transform: rotate(45deg) translate(-8px, -8px);
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="myFuc(this)">
+        <div class="bar-1"></div>
+        <div class="bar-2"></div>
+        <div class="bar-3"></div>
+    </div>
+    
+    <script>
+        let myFuc = x => {
+            // 使用 classList 是替代element.className作为空格分隔的字符串访问元素的类列表的一种方便的方法。
+            x.classList.toggle('change');
+        }
+    
+    </script>
+</body>
+</html>
