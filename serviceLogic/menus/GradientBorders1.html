@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css的渐变边框1</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            background: #222;
+        }
+
+        .module-border-wrap {
+            max-width: 250px;
+            padding: 1rem;
+            position: relative;
+            background: linear-gradient(to right, red, purple);
+            padding: 3px;
+        }
+
+        .module {
+            background: #222;
+            color: white;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+        <div class="module-border-wrap">
+            <div class="module">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero pariatur corporis quaerat voluptatum eos tempora temporibus nisi voluptates sed, exercitationem sequi dolore culpa incidunt accusamus, quasi unde reprehenderit ea molestias.
+            </div>
+        </div>
+</body>
+</html>
