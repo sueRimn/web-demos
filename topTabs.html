@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tabs</title>
+    <style>
+    
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .tablinks {
+        background-color: #555;
+        color:white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+    }
+    .tablink:hover{
+        background-color: #777;
+    }
+    .tabcontent{
+        color: white;
+        display: none;
+        padding: 50px;
+        text-align: center;
+    }
+    
+    #Sue {
+        background-color: pink
+    }
+    #Suerimn {
+        background-color: yellow;
+    }
+    #Tao{
+        background-color: yellowgreen;
+    }
+    #Zhazha{
+        background-color: orange;
+    }
+    </style>
+</head>
+<body>
+    
+    <div id="Sue" class="tabcontent">
+        <h3>Sue</h3>
+        <p>Sue is a girl.</p>
+    </div>
+    <div id="Suerimn" class="tabcontent">
+        <h3>Suerimn</h3>
+        <p>Suerimn is me.</p>
+    </div>
+    <div id="Tao" class="tabcontent">
+        <h3>Tao</h3>
+        <p>Tao is my pig.</p>
+    </div>
+    <div id="Zhazha" class="tabcontent">
+        <h3>Zhazha</h3>
+        <p>Zhazha is my feature son.</p>
+    </div>
+
+    <button class="tablinks" onclick="openCity( 'Sue', this, 'pink')" id="defaultOpen">Sue</button>
+    <button class="tablinks" onclick="openCity( 'Suerimn', this, 'yellow')">Suerimn</button>
+    <button class="tablinks" onclick="openCity( 'Tao', this, 'yellowgreen')">Tao</button>
+    <button class="tablinks" onclick="openCity( 'Zhazha', this, 'orange')">Zhazha</button>
+    
+    <script>
+    const openCity = (name, elmnt, color) => {
+        let i, tabcontent, tablinks;
+
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = '';
+        }
+        document.getElementById(name).style.display = "block";
+        elmnt.style.backgroundColor = color;
+
+        
+    }
+    document.getElementById('defaultOpen').click();
+    </script>
+</body>
+</html>

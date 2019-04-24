@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tabs</title>
+    <style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* style the tab  */
+    .tab{
+        overflow: hidden;
+        border: 1px solid #eee;
+        background-color: darksalmon;
+    }
+    /* style the button inside the tab */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+    .tab button:hover{
+        background-color: indianred;
+
+    }
+    .tab button.active{
+        background-color:rgb(218, 103, 57);
+    }
+    .tabcontent{
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #eee;
+        border-top:none;
+    }
+    .topright{
+        float: right;
+        cursor: pointer;
+        font-size: 28px;
+    }
+    .topright:hover{
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'Sue')" id="defaultOpen">Sue</button>
+        <button class="tablinks" onclick="openCity(event, 'Suerimn')">Suerimn</button>
+        <button class="tablinks" onclick="openCity(event, 'Tao')">Tao</button>
+    </div>
+    <div id="Sue" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Sue</h3>
+        <p>Sue is a girl.</p>
+    </div>
+    <div id="Suerimn" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Suerimn</h3>
+        <p>Suerimn is me.</p>
+    </div>
+    <div id="Tao" class="tabcontent">
+        <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+        <h3>Tao</h3>
+        <p>Tao is my pig.</p>
+    </div>
+    
+    <script>
+    const openCity = (evt, name) => {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+
+        
+    }
+    document.getElementById('defaultOpen').click();
+    </script>
+</body>
+</html>
