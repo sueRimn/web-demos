@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progress Button</title>
+    <link rel="stylesheet" href="css/pro-css.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <button class="pro-btn" id="proBtn">Upload</button>
+    <script>
+        $(function() {
+            $.fn.extend({
+                proBtn: function(action, callback) {
+                    if (action === 'start') {
+                        if ($(this).hasClass('pro-btn-progress-done')) {
+                            $(this).removeClass('pro-btn-progress-done')
+                            $(this).removeClass('pro-btn-progress-done-active');
+                        }
+                        
+                        if (!$(this).hasClass('active')) {
+                            $(this).addClass('active');
+                            $(this).on('transitionend', function() {
+                                if ($(this).hasClass('active')) {
+                                    callback();
+                                }
+                                else if ($(this).hasClass('pro-btn-progress-done')) {
+                                    $(this).addClass('pro-btn-progress-done-active');
+                                }
+                            });
+                        }
+                    }
+                    else if (action === 'end') {
+                        $(this).on('animationend', function() {
+                            $(this).removeClass('active');
+                            $(this).removeClass('pro-btn-progress-100');
+                            $(this).addClass('pro-btn-progress-done');
+                        });
+                    }
+                }
+            });
+        });
+
+        $(function() {
+            $.fn.proBtnProgress = function(elm, progress, callback) {
+                if (progress <= 100) {
+                    setTimeout(function() {
+                        $(elm).removeClass('pro-btn-progress-' + (progress - 1));
+                        $(elm).addClass('pro-btn-progress-' + progress);
+                        $.fn.proBtnProgress(elm, progress + 1, callback);
+                    }, 10);
+                }
+                else {
+                    $('#proBtn').proBtn('end');
+                }
+            };
+            
+            $('#proBtn').on('click', function() {
+                var elm = this;
+                
+                $('#proBtn').proBtn('start', function() {
+                    $.fn.proBtnProgress(elm, 0, function() {
+                        $(this).removeClass('active');
+                    });
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
