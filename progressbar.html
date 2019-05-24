@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>progress bar</title>
+    <style>
+    #myProgress {
+        width: 100%;
+        background-color: #dddddd;
+    }
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4caf50;
+        line-height: 30px;
+        color: #ffffff;
+    }
+    </style>
+</head>
+<body>
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
+    <br>
+    <button onclick="move()">Click me</button>
+
+    <script>
+    
+    const move = () =>{
+        let ele = document.getElementById('myBar');
+        let status = document.getElementById('status');
+        let width = 1;
+        let id = setInterval(() => {
+            if (width >= 100) {
+            clearInterval(id);
+            } else {
+                width++;
+                ele.style.width = width + '%';
+                ele.innerHTML = width + '%';
+            }
+        }, 10);
+    }
+    </script>
+</body>
+</html>
